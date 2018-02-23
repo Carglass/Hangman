@@ -1,12 +1,18 @@
 // initializing the global variables
 let gameIsOn = false;
-let word = "BONJOUR";
+let words = ["BONJOUR","PLANE","CAR","TRUCK"];
+let word = words[getRandomInt(words.length)];
 let count = 10;
 var arrayToComplete = new Array(word.length);
     for (let index = 0; index < arrayToComplete.length; index++) {
         arrayToComplete[index] = 0;
     }
 let answer = new String();
+
+//function to get a random int 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max)) + 1;
+  }
 
 // hasGameEnded test if the game is over and terminates it if necessary
 function hasGameEnded(globalCount) {
@@ -23,6 +29,7 @@ function hasGameEnded(globalCount) {
     }
 }
 
+// function to display the final score (Loose/Win)
 function displayScore(score){
     elem = document.getElementById("score");
     if (score === "win") {
@@ -32,6 +39,12 @@ function displayScore(score){
     } else {
         elem.innerHTML = "An error ocurred :/";
     }
+}
+
+//function to display remaining attempts
+function displayRemaining(){
+    elem = document.getElementById("count");
+    elem.innerHTML = count;
 }
 
 // treatLetter takes a letter as an input and finds if it is in the word, then complete the matching table accordingly
@@ -60,6 +73,7 @@ function treatLetter(input) {
         console.log(wordToComplete);
         answer = wordToComplete;
         displayAnswer();
+        displayRemaining();
     } else {
         console.log("missed");
     }
@@ -68,6 +82,7 @@ function treatLetter(input) {
     console.log(count);  
 }
 
+// function to display the current answer from the user
 function displayAnswer() {
     elem = document.getElementById('word');
     elem.innerHTML = answer;
