@@ -35,8 +35,14 @@ function displayScore(score){
     elem = document.getElementById("score");
     if (score === "win") {
         elem.innerHTML = "You won ! Press any key to restart";
+        classes = elem.classList;
+        classes.add("alert");
+        classes.add("alert-success");
     } else if (score === "loose") {
         elem.innerHTML = "You lost :( Press any key to restart";
+        classes = elem.classList;
+        classes.add("alert");
+        classes.add("alert-danger");
     } else {
         elem.innerHTML = "An error ocurred :/";
     }
@@ -149,6 +155,9 @@ function resetDisplay(nbLetters){
     // reset score
     let elemScore = document.getElementById('score');
     elemScore.innerHTML = "";
+    elemScore.classList.remove("alert");
+    elemScore.classList.remove("alert-success");
+    elemScore.classList.remove("alert-danger");
     // reset guessed
     let elemGuessed = document.getElementById('guessedLetters');
     elemGuessed.innerHTML = "";
