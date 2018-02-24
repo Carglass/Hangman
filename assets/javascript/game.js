@@ -36,13 +36,11 @@ function displayScore(score){
     if (score === "win") {
         elem.innerHTML = "You won ! Press any key to restart";
         classes = elem.classList;
-        classes.add("alert");
-        classes.add("alert-success");
+        classes.add("alert","alert-success");
     } else if (score === "loose") {
         elem.innerHTML = "You lost :( Press any key to restart";
         classes = elem.classList;
-        classes.add("alert");
-        classes.add("alert-danger");
+        classes.add("alert","alert-danger");
     } else {
         elem.innerHTML = "An error ocurred :/";
     }

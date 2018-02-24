@@ -413,10 +413,11 @@
 
 .bgc-green{
     background-color: green;
+    transition-property: "background-color";
+    transition-duration: 2s;  
 }
 
 .bgc-wh-delay{
     background-color: white;
-    transition-property: "background-color";
-    transition-duration: 2s;  
+    
 }
