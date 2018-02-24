@@ -45,6 +45,11 @@ function displayScore(score){
 function displayRemaining(){
     elem = document.getElementById("count");
     elem.innerHTML = count;
+    if (count <= 3) {
+        countClasses = elem.classList;
+        countClasses.add("c-rd");
+        countClasses.add("fw-b");
+    }
 }
 
 // treatLetter takes a letter as an input and finds if it is in the word, then complete the matching table accordingly
@@ -79,7 +84,7 @@ function treatLetter(input) {
         displayAnswer();
         displayRemaining();
     } else {
-        console.log("missed");
+        displayRemaining();
     }
     count--;
     hasGameEnded(count);
@@ -125,6 +130,8 @@ function resetDisplay(nbLetters){
     // reset #count
     let elemCount = document.getElementById('count');
     elemCount.innerHTML = count;
+    elemCount.classList.remove("c-rd");
+    elemCount.classList.remove('fw-b');
     // reset score
     let elemScore = document.getElementById('score');
     elemScore.innerHTML = "";

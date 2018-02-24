@@ -1,0 +1,412 @@
+.content
+{
+    background-image: url("../images/circles-light.png");
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Display */
+
+.d-f
+{
+    display: flex;
+}
+
+.d-b
+{
+    display: block;
+}
+
+.jc-sa
+{
+    justify-content: space-around;
+}
+
+.jc-sb
+{
+    justify-content: space-between
+}
+
+.ai-c
+{
+    align-items: center;
+}
+
+.ai-fs
+{
+    align-items: flex-start;
+}
+
+.ac-fs
+{
+    align-content: flex-start;
+}
+
+.ac-c
+{
+    align-content: center;
+}
+
+.fxw-w
+{
+    flex-wrap: wrap;
+}
+
+.pos-r
+{
+    position: relative;
+}
+
+.pos-a
+{
+    position: absolute;
+}
+
+.b-0
+{
+    bottom: 0;
+}
+
+.fl-l
+{
+    float:left;
+}
+
+/* X-Axis */
+
+.w-100
+{
+    width: 100%;
+}
+
+.w-25
+{
+    width: 25%;
+}
+
+.w-40
+{
+    width: 40%;
+}
+
+.w-65
+{
+    width: 65%;
+}
+
+.w-80{
+    width: 80%;
+}
+
+/* I used percentage instead of pixels for section and aside as it can scale down on smaller screens */
+
+.w-80
+{
+    width: 80%;
+}
+
+.w-960px
+{
+    width: 960px;
+}
+
+/* Y-axis */
+
+.h-50px
+{
+    height: 50px;
+}
+
+.h-70px
+{
+    height: 70px;
+}
+
+.h-150px
+{
+    height: 150px;
+}
+
+.va-m
+{
+    vertical-align: middle;
+}
+
+.lh-50px
+{
+    line-height: 50px;
+}
+
+.lh-70px
+{
+    line-height: 70px;
+}
+
+.ta-c
+{
+    text-align: center;
+}
+
+/* Padding */
+.p-5px
+{
+    padding: 5px;
+}
+
+.p-10px-20px
+{
+    padding: 10px 20px;
+}
+
+.pl-30px
+{
+    padding-left: 30px;
+}
+
+.pr-30px
+{
+    padding-right: 30px;
+}
+
+.pt-15px
+{
+    padding-top: 15px;
+}
+
+.pb-15px
+{
+    padding-bottom: 15px;
+}
+
+/* Border */
+
+.bd-n
+{
+    border: none;
+}
+
+/* Margins */
+
+.m-a
+{
+    margin: auto;
+}
+
+.m-5px
+{
+    margin: 5px;
+}
+
+.mt-30px
+{
+    margin-top: 30px;
+}
+
+.mt-20px
+{
+    margin-top: 20px;
+}
+
+.mb-10px
+{
+    margin-bottom: 10px;
+}
+
+.mb-20px
+{
+    margin-bottom: 20px;
+}
+
+.mb-30px
+{
+    margin-bottom: 30px;
+}
+
+.mr-20px
+{
+    margin-right: 20px;
+}
+
+/* Colors */
+
+.bgc-wh
+{
+    background-color: white;
+}
+
+.bgc-tl
+{
+    background-color: #4aaaa5;
+}
+
+.bgc-dkgy
+{
+    background-color: #666666;
+}
+
+.c-wh
+{
+    color: white;
+}
+
+.c-gy
+{
+    color: #bbbbbb;
+}
+
+.c-dkgy
+{
+    color: #666666;
+}
+
+.c-tl
+{
+    color: #4aaaa5;
+}
+
+.c-rd{
+    color: red;
+}
+
+.op-9
+{
+    opacity: 0.9;
+}
+
+
+/* Fonts */
+
+.td-n
+{
+    text-decoration: none;
+}
+
+.fz-1em
+{
+    font-size: 1em;
+}
+
+.fz-1_2em
+{
+    font-size: 1.2em;
+}
+
+.fz-1_4em
+{
+    font-size: 1.4em;
+}
+
+.fz-2em
+{
+    font-size: 2em;
+}
+
+.fw-b
+{
+    font-weight: bold;
+}
+
+.ls-10px{
+    letter-spacing: 10px;
+}
+
+/* Effects */
+
+.bxsh
+{
+    box-shadow: 0px 2px #cccccc;
+}
+
+.of-c
+{
+    object-fit: cover;
+}
+
+/* Header */
+
+.vRule
+{
+    border-right: 1px solid #cccccc;
+}
+
+.horizontalBarSection
+{
+    height: 3px;
+    background-color: #cccccc;
+    border: 0;
+}
+
+.horizontalBarAside
+{
+    height: 1px;
+    background-color: #cccccc;
+    border: 0;
+}
+
+/* Footer */
+.footer
+{
+    box-shadow: 0px -4px #4aaaac;
+}
+
+/* Form */
+
+::-webkit-input-placeholder
+{
+    color: #aaaaaa;
+}
+
+/* Responsiveness */
+
+@media screen and (max-width: 960px){
+    .md-w-100{
+        width:100%;
+    }
+
+    .md-wrap{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .sm-w-100{
+        width:100%;
+    }
+
+    .sm-w-40{
+        width: 40%;
+    }
+
+    .sm-wrap{
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 640px){
+    .xs-w-100{
+        width:100%;
+    }
+
+    .xs-w-30{
+        width: 30%;
+    }
+
+    .xs-wrap{
+        flex-wrap: wrap;
+    }
+
+    .xs-h-30{
+        height: 30px;
+    }
+
+    .xs-d-f{
+        display: flex;
+    }
+
+    .xs-fd-c{
+        flex-direction: column
+    }
+
+    .xs-jc-c{
+        justify-content: center;
+    }
+}
