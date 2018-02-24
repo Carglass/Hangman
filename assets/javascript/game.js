@@ -1,6 +1,6 @@
 // initializing the global variables
 let gameIsOn = false;
-let words = ["BONJOUR","PLANE","CAR","TRUCK"];
+let words = ["BONJOUR","PLANE","CAR","TRUCK","KART","BOAT","ROCKET","HELICOPTER"];
 let word = words[getRandomInt(words.length)];
 let count = 10;
 var arrayToComplete = new Array(word.length);
@@ -54,14 +54,17 @@ function treatLetter(input) {
     var newRegular = RegExp(letter);
     console.log(newRegular);
     if (word.includes(letter)) {
+        // we complete our array with the letter found
         indexToStart = 0;
         stringToSearch = word;
+        // the loop helps at making sure we take into account all the occurences of the letter
         while ((indexToStart < word.length) && (stringToSearch.includes(letter))) {
             arrayToComplete[stringToSearch.search(newRegular) + indexToStart] = 1;
             indexToStart = stringToSearch.search(newRegular) + indexToStart + 1;
             stringToSearch = word.slice(indexToStart);
         }
         console.log(arrayToComplete);
+        // we update answer to display the current status
         let wordToComplete = new String();
         for (let index = 0; index < arrayToComplete.length; index++) {
             if (arrayToComplete[index] === 1) {
@@ -72,6 +75,7 @@ function treatLetter(input) {
         }
         console.log(wordToComplete);
         answer = wordToComplete;
+        // two display functions to keep the user posted
         displayAnswer();
         displayRemaining();
     } else {
@@ -93,16 +97,38 @@ document.addEventListener('keypress', (e) => {
     if (gameIsOn === true) {
         treatLetter(e.key);
     } else {
+        resetLogic();
+        resetDisplay();
         gameIsOn = true;
-        count = 10;
-        for (let index = 0; index < arrayToComplete.length; index++) {
-            arrayToComplete[index] = 0;
-        }
-        answer = "";
         alert("Game is on!");
     }
 });
 
+//reset all global variables to default values.
+function resetLogic(){
+    word = words[getRandomInt(words.length)];
+    count = 10;
+    arrayToComplete = new Array(word.length);
+    for (let index = 0; index < arrayToComplete.length; index++) {
+        arrayToComplete[index] = 0;
+    }
+    answer = "";
+    for (let index = 0; index < word.length; index++) {
+            answer = answer.concat("_");
+    }
+}
+
+function resetDisplay(nbLetters){
+    // reset #word
+    let elemWord = document.getElementById('word');
+    elemWord.innerHTML = answer;
+    // reset #count
+    let elemCount = document.getElementById('count');
+    elemCount.innerHTML = count;
+    // reset score
+    let elemScore = document.getElementById('score');
+    elemScore.innerHTML = "";
+}
 
 
 
