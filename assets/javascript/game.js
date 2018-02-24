@@ -12,7 +12,7 @@ let guessed = new String();
 
 //function to get a random int 
 function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max)) + 1;
+    return Math.floor(Math.random() * Math.floor(max));
   }
 
 // hasGameEnded test if the game is over and terminates it if necessary
