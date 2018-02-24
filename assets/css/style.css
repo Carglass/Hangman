@@ -410,3 +410,13 @@
         justify-content: center;
     }
 }
+
+.bgc-green{
+    background-color: green;
+}
+
+.bgc-wh-delay{
+    background-color: white;
+    transition-property: "background-color";
+    transition-duration: 2s;  
+}

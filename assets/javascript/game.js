@@ -110,12 +110,15 @@ function displayAnswer() {
 // Listener on key strike, launch game and initializes it if it was off, call treatLetter otherwise
 document.addEventListener('keypress', (e) => {
     if (gameIsOn === true) {
+        elemBody.classList.add("bgc-wh-delay");
         treatLetter(e.key);
     } else {
         resetLogic();
         resetDisplay();
         gameIsOn = true;
-        alert("Game is on!");
+        elemBody = document.getElementById("body");
+        elemBody.classList.remove("bgc-wh-delay");
+        elemBody.classList.add("bgc-green");
     }
 });
 
