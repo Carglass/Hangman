@@ -3,11 +3,12 @@ let gameIsOn = false;
 let words = ["BONJOUR","PLANE","CAR","TRUCK","KART","BOAT","ROCKET","HELICOPTER"];
 let word = words[getRandomInt(words.length)];
 let count = 10;
-var arrayToComplete = new Array(word.length);
+let arrayToComplete = new Array(word.length);
     for (let index = 0; index < arrayToComplete.length; index++) {
         arrayToComplete[index] = 0;
     }
 let answer = new String();
+let guessed = new String();
 
 //function to get a random int 
 function getRandomInt(max) {
@@ -52,6 +53,11 @@ function displayRemaining(){
     }
 }
 
+function displayGuessed(){
+    elem = document.getElementById("guessedLetters");
+    elem.innerHTML = guessed;
+}
+
 // treatLetter takes a letter as an input and finds if it is in the word, then complete the matching table accordingly
 function treatLetter(input) {
     letter = input.toUpperCase();
@@ -84,6 +90,10 @@ function treatLetter(input) {
         displayAnswer();
         displayRemaining();
     } else {
+        guessed = guessed.concat(letter);
+        console.log(letter);
+        console.log(guessed);
+        displayGuessed();
         displayRemaining();
     }
     count--;
@@ -121,6 +131,7 @@ function resetLogic(){
     for (let index = 0; index < word.length; index++) {
             answer = answer.concat("_");
     }
+    guessed = "";
 }
 
 function resetDisplay(nbLetters){
@@ -135,6 +146,9 @@ function resetDisplay(nbLetters){
     // reset score
     let elemScore = document.getElementById('score');
     elemScore.innerHTML = "";
+    // reset guessed
+    let elemGuessed = document.getElementById('guessedLetters');
+    elemGuessed.innerHTML = "";
 }
 
 
