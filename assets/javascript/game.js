@@ -1,12 +1,16 @@
 // initializing the global variables
 let gameIsOn = false;
-let words = ["BONJOUR","PLANE","CAR","TRUCK","KART","BOAT","ROCKET","HELICOPTER"];
+let words = ["ONE PIECE","BLEACH","NARUTO","DRAGON BALL","DEATH NOTE","BAKUMAN","HUNTER X HUNTER","ATTACK ON TITANS"];
 let word = words[getRandomInt(words.length)];
-let count = 10;
+let count = 20;
 let arrayToComplete = new Array(word.length);
-    for (let index = 0; index < arrayToComplete.length; index++) {
+for (let index = 0; index < arrayToComplete.length; index++) {
+    if (word[index] !== " ") {
         arrayToComplete[index] = 0;
+    } else {
+        arrayToComplete[index] = 1;
     }
+}
 let answer = new String();
 let guessed = new String();
 
@@ -129,10 +133,14 @@ document.addEventListener('keypress', (e) => {
 //reset all global variables to default values.
 function resetLogic(){
     word = words[getRandomInt(words.length)];
-    count = 10;
+    count = 20;
     arrayToComplete = new Array(word.length);
     for (let index = 0; index < arrayToComplete.length; index++) {
-        arrayToComplete[index] = 0;
+        if (word[index] !== " ") {
+            arrayToComplete[index] = 0;
+        } else {
+            arrayToComplete[index] = 1;
+        }
     }
     answer = "";
     for (let index = 0; index < word.length; index++) {
