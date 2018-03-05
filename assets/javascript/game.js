@@ -53,6 +53,9 @@ let game = {
         }
         this.remainingCount--;
         this.displayRemaining();
+        if (this.remainingCount <= 10) {
+            this.displayClue();
+        }
         this.hasEnded(this.remainingCount);
     },
     reset: function () {
@@ -99,6 +102,9 @@ let game = {
         // reset guessed
         let elemGuessed = document.getElementById('guessedLetters');
         elemGuessed.innerHTML = "";
+        // reset clue
+        let elemClue = document.getElementById('clue');
+        elemClue.innerHTML = "";
     },
     displayScore: function (score) {
         elem = document.getElementById("score");
@@ -131,9 +137,9 @@ let game = {
         elem = document.getElementById('word');
         elem.innerHTML = this.currentAnswer;
     },
-    displayClue: function (clue){
+    displayClue: function (){
         elem = document.getElementById('clue');
-        elem.innerHTML = clue;
+        elem.innerHTML = this.wordToGuessObject.clue;
     }
 };
 
