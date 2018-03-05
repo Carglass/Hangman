@@ -1,16 +1,16 @@
 // Declaring & initializing the global variables
-let words = ["ONE PIECE", "BLEACH", "NARUTO", "DRAGON BALL", "DEATH NOTE", "BAKUMAN", "HUNTER X HUNTER", "ATTACK ON TITANS"];
+let words = [{name: "ONE PIECE", clue:"Pirates"}, {name: "BLEACH", clue: "Bankai"}, {name: "NARUTO", clue: "Ninja"}, {name: "DRAGON BALL", clue:"Kaaaa-Meeee"}, {name: "DEATH NOTE", clue:"dangerous notebook"}, {name: "BAKUMAN", clue:"how to create manga"}, {name:"HUNTER X HUNTER", clue:"a quest to find Gon's dad"}, {name: "ATTACK ON TITANS", clue:"big big big"}];
 // let word = words[getRandomInt(words.length)];
 
 let game = {
     state: false,
-    wordToGuess: words[getRandomInt(words.length)],
+    wordToGuessObject: words[getRandomInt(words.length)],
     remainingCount: 20,
     arrayToComplete: [],
     currentAnswer: "",
     currentGuessed: "",
     hasEnded: function (globalCount) {
-        if (globalCount >= 0 && this.currentAnswer === this.wordToGuess) {
+        if (globalCount >= 0 && this.currentAnswer === this.wordToGuessObject.name) {
             this.displayScore('win');
             this.state = false;
         } else if (globalCount === 0) {
@@ -23,21 +23,21 @@ let game = {
     treatLetter: function (input) {
         letter = input.toUpperCase();
         var newRegular = RegExp(letter);
-        if (this.wordToGuess.includes(letter)) {
+        if (this.wordToGuessObject.name.includes(letter)) {
             // we complete our array with the letter found
             indexToStart = 0;
-            stringToSearch = this.wordToGuess;
+            stringToSearch = this.wordToGuessObject.name;
             // the loop helps at making sure we take into account all the occurences of the letter
-            while ((indexToStart < this.wordToGuess.length) && (stringToSearch.includes(letter))) {
+            while ((indexToStart < this.wordToGuessObject.name.length) && (stringToSearch.includes(letter))) {
                 this.arrayToComplete[stringToSearch.search(newRegular) + indexToStart] = 1;
                 indexToStart = stringToSearch.search(newRegular) + indexToStart + 1;
-                stringToSearch = this.wordToGuess.slice(indexToStart);
+                stringToSearch = this.wordToGuessObject.name.slice(indexToStart);
             }
             // we update answer to display the current status
             let wordToComplete = new String();
             for (let index = 0; index < this.arrayToComplete.length; index++) {
                 if (this.arrayToComplete[index] === 1) {
-                    wordToComplete = wordToComplete.concat(this.wordToGuess[index]);
+                    wordToComplete = wordToComplete.concat(this.wordToGuessObject.name[index]);
                 } else {
                     wordToComplete = wordToComplete.concat("_");
                 }
@@ -60,18 +60,18 @@ let game = {
         this.resetDisplay();
     },
     resetLogic: function () {
-        this.wordToGuess = words[getRandomInt(words.length)];
+        this.wordToGuessObject = words[getRandomInt(words.length)];
         this.remainingCount = 20;
-        this.arrayToComplete = new Array(this.wordToGuess.length);
+        this.arrayToComplete = new Array(this.wordToGuessObject.name.length);
         for (let index = 0; index < this.arrayToComplete.length; index++) {
-            if (this.wordToGuess[index] !== " ") {
+            if (this.wordToGuessObject.name[index] !== " ") {
                 this.arrayToComplete[index] = 0;
             } else {
                 this.arrayToComplete[index] = 1;
             }
         }
         this.currentAnswer = "";
-        for (let index = 0; index < this.wordToGuess.length; index++) {
+        for (let index = 0; index < this.wordToGuessObject.name.length; index++) {
             if (this.arrayToComplete[index] === 0) {
                 this.currentAnswer = this.currentAnswer.concat("_");;
             } else {
@@ -130,6 +130,10 @@ let game = {
     displayAnswer: function () {
         elem = document.getElementById('word');
         elem.innerHTML = this.currentAnswer;
+    },
+    displayClue: function (clue){
+        elem = document.getElementById('clue');
+        elem.innerHTML = clue;
     }
 };
 
